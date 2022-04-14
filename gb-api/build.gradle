@@ -1,48 +1,20 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.6'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java-library'
+    id 'java'
 }
 
-group = 'ru.gb'
-version = '0.0.1-mart'
-sourceCompatibility = '11'
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
+group 'ru.gb'
+version '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-ext {
-    set('springCloudVersion', "2021.0.1")
-}
-
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'io.deephaven:deephaven-Configuration:0.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
-jar {
-    enabled = true
-}
-bootJar {
-    enabled = false
-}
-
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }

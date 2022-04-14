@@ -1,1 +1,5 @@
 rootProject.name = 'gb-shop-mart'
+include 'config-server'
+include 'gb-api'
+include 'gb-external-api'
+
